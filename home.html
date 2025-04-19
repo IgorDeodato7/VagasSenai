@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma SENAI | Conectando Talentos Técnicos ao Mercado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --senai-red: #e31919;
+    --senai-red-dark: #c01010;
+    --senai-dark: #121212;
+    --senai-light: #f8f9fa;
+    --senai-white: #ffffff;
+    --senai-gradient: linear-gradient(135deg, #e31919 0%, #c01010 100%);
+    --glass-effect: rgba(255, 255, 255, 0.08);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --backdrop-filter: blur(12px);
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --section-spacing: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--senai-white);
+    color: var(--senai-dark);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Navbar Moderna */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+    backdrop-filter: var(--backdrop-filter);
+    background: rgba(227, 25, 25, 0.9);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: var(--glass-border);
+    padding: 1.2rem 0;
+}
+
+.scrolled {
+    background: rgba(227, 25, 25, 0.98) !important;
+    padding: 0.8rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+.logo img {
+    height: 42px;
+    margin-right: 12px;
+    transition: var(--transition);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.nav-links a i {
+    margin-right: 8px;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: white;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+/* Botões da Navbar - Estilo Atualizado */
+.nav-links .btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    margin-left: 1rem;
+    transition: var(--transition);
+    box-shadow: none;
+}
+
+.nav-links .btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.nav-links .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-links .btn-secondary {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+}
+
+.nav-links .btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de hover mais suave */
+.nav-links .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Espaçamento entre os botões */
+.nav-links li:has(.btn) {
+    margin-left: 0.8rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--senai-gradient);
+    color: white;
+    box-shadow: 0 5px 20px rgba(227, 25, 25, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(227, 25, 25, 0.4);
+    background: linear-gradient(135deg, #c01010 0%, #e31919 100%);
+}
+
+.btn-secondary {
+    background: var(--senai-dark);
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: #000000;
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--senai-red);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    width: 28px;
+    height: 20px;
+    position: relative;
+}
+
+.hamburger span {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--senai-dark);
+}
+
+.hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    color: white;
+    padding-top: 100px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    font-weight: 400;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 2.2rem;
+    color: var(--senai-red);
+    margin-right: 1.2rem;
+}
+
+.stat-text h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.stat-text p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Seção Sobre */
+.about {
+    padding: var(--section-spacing) 0;
+    background-color: white;
+    position: relative;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    color: var(--senai-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 4px;
+    background: var(--senai-gradient);
+    bottom: -12px;
+    left: 0;
+    border-radius: 2px;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-size: 1.05rem;
+}
+
+.about-features {
+    margin: 2.2rem 0;
+}
+
+.feature-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon {
+    font-size: 1.4rem;
+    color: var(--senai-red);
+    margin-right: 1.5rem;
+    min-width: 30px;
+}
+
+.feature-text h4 {
+    font-size: 1.15rem;
+    color: var(--senai-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.feature-text p {
+    color: #666;
+    font-size: 0.98rem;
+    margin-bottom: 0;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition);
+    height: 500px;
+}
+
+.about-image:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Seção Diferenciais */
+.diferenciais {
+    padding: var(--section-spacing) 0;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--senai-dark);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: var(--senai-gradient);
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.diferencial-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.8rem 2.2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-align: center;
+}
+
+.diferencial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--senai-gradient);
+    transition: height 0.4s ease;
+    z-index: -1;
+}
+
+.diferencial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.diferencial-card:hover::before {
+    height: 100%;
+}
+
+.diferencial-icon {
+    font-size: 3rem;
+    color: var(--senai-red);
+    margin-bottom: 1.8rem;
+    transition: var(--transition);
+}
+
+.diferencial-card:hover .diferencial-icon {
+    color: white;
+}
+
+.diferencial-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--senai-dark);
+    transition: var(--transition);
+}
+
+.diferencial-card p {
+    color: #666;
+    line-height: 1.7;
+    transition: var(--transition);
+    font-size: 0.98rem;
+}
+
+.diferencial-card:hover h3,
+.diferencial-card:hover p {
+    color: white;
+}
+
+/* Seção Como Funciona */
+.how-it-works {
+    padding: var(--section-spacing) 0;
+    background-color: white;
+    position: relative;
+}
+
+.steps-container {
+    position: relative;
+    margin-top: 4rem;
+}
+
+.progress-line {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, var(--senai-red) 0%, var(--senai-red) 33%, #ddd 33%, #ddd 100%);
+    top: 90px;
+    left: 0;
+    z-index: 1;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.step {
+    flex: 0 0 calc(33.333% - 2rem);
+    text-align: center;
+    position: relative;
+    padding-top: 100px;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    background: white;
+    color: var(--senai-red);
+    border-radius: 50%;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    border: 5px solid #f9f9f9;
+    transition: var(--transition);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.step:hover .step-number {
+    transform: translateX(-50%) scale(1.05);
+    background: var(--senai-gradient);
+    color: white;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--senai-dark);
+}
+
+.step p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 0.98rem;
+}
+
+/* Seção Depoimentos */
+.testimonials {
+    padding: var(--section-spacing) 0;
+    background: #f9f9f9;
+}
+
+.testimonials-slider {
+    max-width: 900px;
+    margin: 4rem auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    margin: 0 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--senai-gradient);
+    transition: height 0.4s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial:hover::before {
+    height: 100%;
+    opacity: 0.05;
+}
+
+.testimonial-content {
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-content::before,
+.testimonial-content::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--senai-red);
+    opacity: 0.1;
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+}
+
+.testimonial-content::before {
+    top: -15px;
+    left: -5px;
+}
+
+.testimonial-content::after {
+    bottom: -50px;
+    right: -5px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.author-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1.5rem;
+    border: 3px solid var(--senai-red);
+    flex-shrink: 0;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-size: 1.2rem;
+    color: var(--senai-dark);
+    margin-bottom: 0.5rem;
+}
+
+.author-info p {
+    color: #777;
+    font-size: 0.92rem;
+}
+
+/* Seção Parceiros */
+.partners {
+    padding: var(--section-spacing) 0;
+    background-color: white;
+}
+
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 3.5rem;
+    align-items: center;
+}
+
+.partner-logo {
+    max-width: 160px;
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* CTA Section */
+.cta {
+    background: var(--senai-gradient);
+    color: white;
+    padding: var(--section-spacing) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cta-shape-1 {
+    width: 350px;
+    height: 350px;
+    top: -120px;
+    left: -120px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.cta-shape-2 {
+    width: 250px;
+    height: 250px;
+    bottom: -80px;
+    right: -80px;
+    animation: float 10s ease-in-out infinite 2s;
+}
+
+/* Footer */
+footer {
+    background: var(--senai-dark);
+    color: white;
+    padding: 5rem 0 2rem;
+    position: relative;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo img {
+    height: 42px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: var(--transition);
+    font-size: 1.05rem;
+}
+
+.social-links a:hover {
+    background: var(--senai-red);
+    transform: translateY(-3px);
+}
+
+.footer-links h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-links h3::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 3px;
+    background: var(--senai-gradient);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.9rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    font-size: 0.92rem;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+/* Animações */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+    
+    .about-content {
+        gap: 3rem;
+    }
+    
+    .about-image {
+        height: 450px;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --section-spacing: 80px;
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+        max-width: 550px;
+        margin: 0 auto;
+        height: 400px;
+    }
+    
+    .steps {
+        flex-wrap: wrap;
+    }
+    
+    .step {
+        flex: 0 0 100%;
+        margin-bottom: 3.5rem;
+        padding-top: 90px;
+    }
+    
+    .progress-line {
+        display: none;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-avatar {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 350px;
+        height: 100vh;
+        background: rgba(227, 25, 25, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transition: right 0.5s ease;
+        padding: 2rem;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 1.2rem 0;
+        width: 100%;
+    }
+    
+    .nav-links a {
+        font-size: 1.05rem;
+        padding: 0.7rem 0;
+    }
+    
+    /* Versão mobile para os botões */
+    .nav-links .btn {
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .nav-links li:has(.btn) {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    
+    .hero p {
+        font-size: 1.05rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    
+    .hero-stats {
+        gap: 2rem;
+    }
+    
+    .stat-icon {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+    }
+    
+    .stat-text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+    
+    .cta h2 {
+        font-size: 2.2rem;
+    }
+    
+    .cta p {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --section-spacing: 70px;
+    }
+    
+    .hero {
+        min-height: 750px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 0.98rem;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .diferencial-card {
+        padding: 2.2rem 1.8rem;
+    }
+    
+    .testimonial {
+        padding: 2.2rem 1.8rem;
+    }
+    
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar Moderna -->
+    <header id="navbar">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SENAI_S%C3%A3o_Paulo_logo.png/1200px-SENAI_S%C3%A3o_Paulo_logo.png" alt="SENAI Logo">
+                    <div class="logo-text">
+                        <h1>Plataforma SENAI</h1>
+                        <span>Estágio & Emprego</span>
+                    </div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#hero"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="#diferenciais"><i class="fas fa-star"></i> Diferenciais</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-cogs"></i> Como Funciona</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-quote-left"></i> Depoimentos</a></li>
+                    <li><a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="login.html" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Cadastre-se</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1>A ponte entre sua formação técnica e o mercado de trabalho</h1>
+                <p>A Plataforma SENAI conecta alunos e ex-alunos qualificados com as melhores oportunidades de estágio e emprego no setor industrial. Comece sua jornada profissional hoje mesmo.</p>
+                
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-user-graduate"></i> Sou Aluno</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-building"></i> Sou Empresa</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>12.500+</h3>
+                            <p>Alunos Empregados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>850+</h3>
+                            <p>Empresas Parceiras</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>3.200+</h3>
+                            <p>Oportunidades</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Transformando Educação em Oportunidades</h2>
+                    <p>A Plataforma de Estágio e Emprego SENAI é a solução definitiva para conectar talentos técnicos qualificados com o mercado de trabalho. Desenvolvida com tecnologia de ponta, nossa plataforma oferece uma experiência única para alunos, ex-alunos e empresas parceiras.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Conexões Inteligentes</h4>
+                                <p>Nosso algoritmo conecta automaticamente candidatos e vagas com base em perfis compatíveis.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Ambiente Seguro</h4>
+                                <p>Todos os dados são protegidos com criptografia avançada e políticas de privacidade rigorosas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Resultados Comprovados</h4>
+                                <p>Mais de 85% dos alunos que usam nossa plataforma conseguem emprego em até 3 meses.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Saiba Mais</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipe trabalhando">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Diferenciais Section -->
+    <section id="diferenciais" class="diferenciais">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Diferenciais</h2>
+                <p>Descubra o que torna nossa plataforma única e essencial para sua carreira</p>
+            </div>
+            
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Validação SENAI</h3>
+                    <p>Todos os perfis são validados pela instituição, garantindo a autenticidade das informações e certificados.</p>
+                </div>
+                
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Match Perfeito</h3>
+                    <p>Nosso sistema de matching avançado conecta você apenas com vagas que realmente combinam com seu perfil.</p>
+                </div>
+                
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Preparação Profissional</h3>
+                    <p>Acesso exclusivo a materiais e cursos para preparação para entrevistas e desenvolvimento de carreira.</p>
+                </div>
+                
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Rede Exclusiva</h3>
+                    <p>Conecte-se com outros profissionais SENAI e amplie sua rede de contatos profissionais.</p>
+                </div>
+                
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Totalmente Mobile</h3>
+                    <p>Acesse a plataforma de qualquer dispositivo e receba notificações em tempo real sobre novas oportunidades.</p>
+                </div>
+                
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte Dedicado</h3>
+                    <p>Equipe especializada disponível para auxiliar em todo o processo de busca e aplicação para vagas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Como Funciona Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Funciona</h2>
+                <p>Em poucos passos, você estará pronto para conquistar grandes oportunidades</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="progress-line"></div>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Crie seu Perfil</h3>
+                        <p>Cadastre-se em minutos, adicione seus dados acadêmicos, experiência profissional e habilidades técnicas. Quanto mais completo seu perfil, melhores serão as recomendações.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Encontre Vagas</h3>
+                        <p>Nossa plataforma irá sugerir as melhores oportunidades baseadas no seu perfil. Você também pode buscar vagas por área, localização ou tipo de contrato.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Candidature-se</h3>
+                        <p>Com um clique, envie seu perfil para as vagas desejadas. Acompanhe o status de cada candidatura e receba feedbacks das empresas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Depoimentos Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Usa, Aprova</h2>
+                <p>Veja o que alunos e empresas estão falando sobre nossa plataforma</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"A plataforma SENAI foi fundamental para eu conseguir meu primeiro emprego na área de mecânica. Em menos de 2 semanas após me cadastrar, já estava trabalhando em uma grande indústria. A facilidade de uso e a qualidade das vagas disponíveis superaram todas as minhas expectativas."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Ex-aluno Mecânica SENAI | Efetivado na Indústria ABC</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Como empresa, encontramos na plataforma SENAI os melhores talentos técnicos para nossa equipe. A qualidade dos candidatos é excepcional e já contratamos vários profissionais através dela. O sistema de filtros avançados nos permite encontrar exatamente o perfil que precisamos em poucos minutos."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Oliveira</h4>
+                            <p>Gerente de RH | Indústria ABC</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Depois de me formar no curso de eletrotécnica, consegui meu estágio ideal através da plataforma. Hoje sou efetivado e continuo crescendo na empresa. O diferencial foi poder mostrar meus certificados SENAI diretamente no perfil, o que deu mais credibilidade ao meu currículo."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="João Santos">
+                        </div>
+                        <div class="author-info">
+                            <h4>João Santos</h4>
+                            <p>Técnico em Eletrotécnica | Empresa XYZ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Parceiros Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Parceiros</h2>
+                <p>Empresas que confiam em nossos talentos</p>
+            </div>
+            
+            <div class="partners-grid">
+                <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHvDth4MVKYYg/company-logo_200_200/company-logo_200_200/0/1715964955321/bmwdobrasil_logo?e=2147483647&v=beta&t=tToSVIUzKSvpfrN2DTExqsh0iNDoklBUo2ER892q0Q0" alt="Empresa 1" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/General_Motors_%282021%29.svg" alt="Empresa 2" class="partner-logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHc09dCaSjCu0x098DETJcO4_NhEcUSeVbXQ&s" alt="Empresa 3" class="partner-logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmEbHOSu28iQCR_cBmzq7ZVLCE48MP8Td1gg&s" alt="Empresa 4" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Empresa 5" class="partner-logo">
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg-shapes">
+            <div class="cta-shape cta-shape-1"></div>
+            <div class="cta-shape cta-shape-2"></div>
+        </div>
+        
+        <div class="container">
+            <h2>Pronto para dar o próximo passo na sua carreira?</h2>
+            <p>Junte-se a milhares de alunos e ex-alunos SENAI que já transformaram suas vidas através da nossa plataforma. Cadastre-se gratuitamente e comece hoje mesmo.</p>
+            
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary pulse"><i class="fas fa-user-plus"></i> Cadastre-se Gratuitamente</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-play-circle"></i> Veja Como Funciona</a>
+            </div>
+        </div>
+    </section>
+    
+        <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://www.inova.unicamp.br/wp-content/uploads/2021/05/SENAI-SP.jpg" alt="SENAI Logo">
+                    <p>A plataforma oficial de estágios e empregos do SENAI, conectando talentos técnicos ao mercado de trabalho desde 2018.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Para Alunos</h3>
+                    <ul>
+                        <li><a href="#">Como criar seu perfil</a></li>
+                        <li><a href="#">Dicas para currículo</a></li>
+                        <li><a href="#">Preparação para entrevistas</a></li>
+                        <li><a href="#">Vagas em destaque</a></li>
+                        <li><a href="#">Perguntas frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Para Empresas</h3>
+                    <ul>
+                        <li><a href="#">Cadastrar vagas</a></li>
+                        <li><a href="#">Encontrar talentos</a></li>
+                        <li><a href="#">Parcerias SENAI</a></li>
+                        <li><a href="#">Planos e preços</a></li>
+                        <li><a href="#">Cases de sucesso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="#">Sobre o projeto</a></li>
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</li>
+                        <li><i class="fas fa-phone"></i> (11) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> contato@plataformasenai.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Plataforma de Estágio e Emprego SENAI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Hero Canvas Animation
+        const canvas = document.getElementById('heroCanvas');
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const particleCount = window.innerWidth < 768 ? 30 : 60;
+            
+            // Particle constructor
+            function Particle() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.1})`;
+            }
+            
+            // Update particle position
+            Particle.prototype.update = function() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            };
+            
+            // Draw particle
+            Particle.prototype.draw = function() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            };
+            
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    
+                    // Connect particles
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 150) {
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 150})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Testimonials Slider
+        let testimonialIndex = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        function nextTestimonial() {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        }
+        
+        // Auto-rotate testimonials
+        if (testimonials.length > 1) {
+            showTestimonial(0);
+            setInterval(nextTestimonial, 5000);
+        } else if (testimonials.length === 1) {
+            showTestimonial(0);
+        }
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-image, .diferencial-card, .step, .testimonial');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = 'fadeIn 1s forwards';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+    </script>
+</body>
+</html>
