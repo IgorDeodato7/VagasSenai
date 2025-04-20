@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa - SENAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-light {
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(204, 0, 0, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(204, 0, 0, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 40% 80%, rgba(204, 0, 0, 0.1) 0%, transparent 30%);
+            animation: moveBackground 30s infinite alternate;
+            z-index: -3;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translate(-10%, -10%);
+            }
+            100% {
+                transform: translate(10%, 10%);
+            }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            opacity: 0.5;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(204, 0, 0, 0.15);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-20vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .main-container {
+            display: flex;
+            width: 900px;
+            max-width: 90%;
+            min-height: 600px;
+            background-color: white;
+            /* Removi a borda vermelha conforme solicitado */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-section {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .image-section .logo-senai {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            padding: 0 30px;
+            z-index: 1;
+        }
+
+        .image-section .logo-senai a {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .image-section .logo-senai a:hover {
+            transform: scale(1.05);
+        }
+
+        .image-section .logo-senai img {
+            height: 60px;
+            /* Removi o filtro que estava deixando o logo branco */
+            width: auto;
+            max-width: 100%;
+        }
+
+        h1 {
+            color: #CC0000;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .required:after {
+            content: " *";
+            color: #CC0000;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #CC0000;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-left: 3px solid #A30000;
+            box-shadow: 0 0 10px rgba(204, 0, 0, 0.1);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        button {
+            background-color: #CC0000;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #A30000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .login-link a {
+            color: #CC0000;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: #CC0000;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .image-section {
+                display: none;
+            }
+            
+            .form-section {
+                padding: 30px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-light"></div>
+    <div class="grid-overlay"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="main-container">
+        <div class="form-section">
+            <h1>Cadastro de Empresa</h1>
+            
+            <form id="cadastroEmpresaForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="razaoSocial" class="required">Razão Social</label>
+                        <input type="text" id="razaoSocial" name="razaoSocial" required>
+                        <div class="error" id="razaoSocialError">Por favor, insira a razão social</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nomeFantasia">Nome Fantasia</label>
+                        <input type="text" id="nomeFantasia" name="nomeFantasia">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cnpj" class="required">CNPJ</label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                        <div class="error" id="cnpjError">CNPJ inválido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ramoAtividade" class="required">Ramo</label>
+                        <select id="ramoAtividade" name="ramoAtividade" required>
+                            <option value="">Selecione</option>
+                            <option value="industria">Indústria</option>
+                            <option value="comercio">Comércio</option>
+                            <option value="servicos">Serviços</option>
+                            <option value="tecnologia">Tecnologia</option>
+                        </select>
+                        <div class="error" id="ramoAtividadeError">Selecione um ramo</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="required">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error" id="emailError">E-mail inválido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone" class="required">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        <div class="error" id="telefoneError">Telefone inválido</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="estado" class="required">Estado</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">UF</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                        <div class="error" id="estadoError">Selecione um estado</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cidade" class="required">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" required>
+                        <div class="error" id="cidadeError">Por favor, insira a cidade</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo</label>
+                    <textarea id="endereco" name="endereco"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="senha" class="required">Senha</label>
+                        <input type="password" id="senha" name="senha" required>
+                        <div class="error" id="senhaError">Mínimo 6 caracteres</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmarSenha" class="required">Confirmar Senha</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                        <div class="error" id="confirmarSenhaError">Senhas não coincidem</div>
+                    </div>
+                </div>
+                
+                <button type="submit">CADASTRAR EMPRESA</button>
+            </form>
+            
+            <div class="login-link">
+                <span>Já tem cadastro? </span>
+                <a href="login.html">Faça login</a>
+            </div>
+        </div>
+        
+        <div class="image-section">
+            <div class="logo-senai">
+                <a href="home.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/SENAI_S%C3%A3o_Paulo_logo.png" alt="SENAI">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cria partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 7 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}vw`;
+                
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Máscaras para CNPJ e Telefone
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '.' + value.substring(2);
+            }
+            if (value.length > 6) {
+                value = value.substring(0, 6) + '.' + value.substring(6);
+            }
+            if (value.length > 10) {
+                value = value.substring(0, 10) + '/' + value.substring(10);
+            }
+            if (value.length > 15) {
+                value = value.substring(0, 15) + '-' + value.substring(15, 17);
+            }
+            
+            e.target.value = value;
+        });
+        
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 0) {
+                value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+            }
+            if (value.length > 10) {
+                value = value.substring(0, 10) + '-' + value.substring(10, 15);
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Validação do formulário
+        document.getElementById('cadastroEmpresaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            const camposObrigatorios = [
+                'razaoSocial', 'cnpj', 'ramoAtividade', 
+                'email', 'telefone', 'estado', 'cidade',
+                'senha', 'confirmarSenha'
+            ];
+            
+            camposObrigatorios.forEach(campo => {
+                const element = document.getElementById(campo);
+                const errorElement = document.getElementById(`${campo}Error`);
+                
+                if (!element.value.trim()) {
+                    errorElement.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            });
+            
+            const cnpj = document.getElementById('cnpj').value;
+            if (cnpj.length < 18) {
+                document.getElementById('cnpjError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const email = document.getElementById('email').value;
+            if (!email.includes('@') || !email.includes('.')) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const senha = document.getElementById('senha').value;
+            if (senha.length < 6) {
+                document.getElementById('senhaError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+            if (confirmarSenha !== senha) {
+                document.getElementById('confirmarSenhaError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Cadastro realizado com sucesso!');
+                // this.submit();
+            }
+        });
+        
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>
